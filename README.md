@@ -30,6 +30,9 @@ Usage
       ]
     });
 
+    // You can also set maxConcurrentRequests in the createURLBodyStream opts to
+    // tell it how many http requests to run at once. Default is 3.
+
     bodyStream.on('data', function logData(body) {
       console.log('A body I received via http:', body);
     });

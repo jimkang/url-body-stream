@@ -63,7 +63,8 @@ test('URL body stream from URLs', function urlBodyStream(t) {
   });
 
   var bodyStream = headwaters.createURLBodyStream({
-    urls: urls
+    urls: urls,
+    maxConcurrentRequests: 8
   });
 
   bodyStream.on('data', function saveData(body) {
