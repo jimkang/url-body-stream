@@ -41,14 +41,16 @@ test('URL body stream from URLs', function urlBodyStream(t) {
     pass: 'skerpin'
   };
 
-  t.plan(mockBodies.length * 2);
+  t.plan(mockBodies.length * 3);
 
   var mockRequestIndex = 0;
   var emittedBodies = [];
 
   var headwaters = createURLHeadwaters({
+    parseJson: true,
     request: function mockRequest(opts, done) {
       t.deepEqual(opts.auth, authParams, 'Uses basic auth params in request.');
+      t.equal(opts.json, true, 'Asks request to parse json.');
 
       conformAsync.callBackOnNextTick(done,
         null,

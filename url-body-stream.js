@@ -6,6 +6,7 @@ var requestModule = require('request');
 function createURLBodyHeadwaters(ctorOpts) {
   var request;
   var authParams;
+  var parseJson = false
 
   if (ctorOpts) {
     if (ctorOpts.request) {
@@ -13,6 +14,9 @@ function createURLBodyHeadwaters(ctorOpts) {
     }
     if (ctorOpts.authParams) {
       authParams = ctorOpts.authParams;
+    }
+    if (ctorOpts.parseJson) {
+      parseJson = ctorOpts.parseJson;
     }
   }
 
@@ -42,11 +46,15 @@ function createURLBodyHeadwaters(ctorOpts) {
         url: url,
         headers: {
           'user-agent': 'commit-seeker'
-        }
+        },
       };
 
       if (authParams) {
         requestOpts.auth = authParams;
+      }
+
+      if (parseJson) {
+        requestOpts.json = true;
       }
 
       function saveBodyFromResponse(error, response, body) {

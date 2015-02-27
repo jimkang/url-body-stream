@@ -1,6 +1,6 @@
 {
   "name": "url-body-stream",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Takes an array of URLs and creates a stream that emits the bodies retrieved from those URLs.",
   "main": "url-body-stream.js",
   "scripts": {
